@@ -9,6 +9,8 @@ EXPOSE 80
 #Run benchmarks: docker build --target builder --build-arg build_configuration=Release -t ocelot-build . && docker run ocelot-build run -c Release --project test/Ocelot.Benchmarks/Ocelot.Benchmarks.csproj
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS builder
 WORKDIR /build
+COPY . .
+RUN ls
 #First we add only the project files so that we can cache nuget packages with dotnet restore
 COPY Ocelot.sln Ocelot.sln
 COPY src/Ocelot/Ocelot.csproj src/Ocelot/Ocelot.csproj
