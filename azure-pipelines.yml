@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'e66c0fd1-be2a-412d-a114-1d6330fce9b6'
   imageRepository: 'sanderswoopocelot'
   containerRegistry: 'swoop.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/docker/Dockerfile.build .'
+  dockerfilePath: '$(Build.SourcesDirectory)/docker/Dockerfile.build'
   tag: '$(Build.BuildId)'
   
   # Agent VM image name
