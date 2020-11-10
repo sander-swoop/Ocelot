@@ -8,7 +8,7 @@ ENV OCELOT_COVERALLS_TOKEN=$OCELOT_COVERALLS_TOKEN
 
 WORKDIR /src
 
-COPY ./. .
+COPY . .
 
 RUN chmod u+x build.sh
 
