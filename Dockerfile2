@@ -36,14 +36,3 @@ COPY test test
 RUN dotnet build --no-restore -c Release 
 ENTRYPOINT ["dotnet"]
 
-#This is just for holding the published manual tests...
-FROM builder AS manual-test-publish
-RUN dotnet publish --no-build -c Release -o /app test/Ocelot.ManualTest
-
-#Run manual tests! This is the default run option.
-#docker build -t ocelot-manual-test . && docker run --net host ocelot-manual-test
-FROM base AS manual-test
-ENV ASPNETCORE_ENVIRONMENT=Development
-COPY --from=manual-test-publish /app .
-ENTRYPOINT ["dotnet", "Ocelot.ManualTest.dll"]
-
