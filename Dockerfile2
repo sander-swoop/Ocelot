@@ -33,14 +33,12 @@ RUN dotnet restore
 COPY codeanalysis.ruleset codeanalysis.ruleset
 COPY src src
 COPY test test
-ARG build_configuration=Debug
 RUN dotnet build --no-restore -c Release 
 ENTRYPOINT ["dotnet"]
 
 #This is just for holding the published manual tests...
 FROM builder AS manual-test-publish
-ARG build_configuration=Debug
-RUN dotnet publish --no-build -c ${build_configuration} -o /app test/Ocelot.ManualTest
+RUN dotnet publish --no-build -c Release -o /app test/Ocelot.ManualTest
 
 #Run manual tests! This is the default run option.
 #docker build -t ocelot-manual-test . && docker run --net host ocelot-manual-test
