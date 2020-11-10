@@ -1,8 +1,8 @@
-FROM microsoft/dotnet:3.1-aspnetcore-runtime AS base
+FROM  mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/dotnet:3.1-sdk AS build
+FROM  mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["ApiGateway/ApiGateway.csproj", "ApiGateway/"]
 COPY ["src/Ocelot.Provider.Polly/Ocelot.Provider.Polly.csproj", "src/Ocelot.Provider.Polly/"]
